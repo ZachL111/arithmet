@@ -55,6 +55,17 @@ foreach ($pathPattern in $knownPaths) {
   }
 }
 
-ocaml tests/test.ml
+ocaml -I src tests/test.ml
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check-arithmet-detail.ps1
+
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check-arithmet-properties.ps1
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check-arithmet-golden.ps1
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
