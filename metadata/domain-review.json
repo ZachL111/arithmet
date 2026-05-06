@@ -1,0 +1,73 @@
+{
+  "repo": "arithmet",
+  "language": "OCaml",
+  "category": "Compilers",
+  "goal": "Compile arithmetic expressions to stack bytecode and evaluate golden fixtures.",
+  "review_model": {
+    "terms": [
+      "IR pressure",
+      "lowering drift",
+      "stack depth",
+      "diagnostic reach"
+    ],
+    "lanes": [
+      "ship",
+      "watch",
+      "hold"
+    ],
+    "score": "signal * 2 + slack + confidence - drag * 3",
+    "purpose": "surface the domain-specific cases that need the most careful review"
+  },
+  "cases": [
+    {
+      "name": "baseline",
+      "focus": "IR pressure",
+      "signal": 66,
+      "slack": 50,
+      "drag": 20,
+      "confidence": 58,
+      "score": 180,
+      "lane": "ship"
+    },
+    {
+      "name": "stress",
+      "focus": "lowering drift",
+      "signal": 61,
+      "slack": 21,
+      "drag": 10,
+      "confidence": 85,
+      "score": 198,
+      "lane": "ship"
+    },
+    {
+      "name": "edge",
+      "focus": "stack depth",
+      "signal": 53,
+      "slack": 20,
+      "drag": 18,
+      "confidence": 55,
+      "score": 127,
+      "lane": "watch"
+    },
+    {
+      "name": "recovery",
+      "focus": "diagnostic reach",
+      "signal": 49,
+      "slack": 22,
+      "drag": 30,
+      "confidence": 72,
+      "score": 102,
+      "lane": "hold"
+    },
+    {
+      "name": "stale",
+      "focus": "IR pressure",
+      "signal": 57,
+      "slack": 28,
+      "drag": 14,
+      "confidence": 89,
+      "score": 189,
+      "lane": "ship"
+    }
+  ]
+}
